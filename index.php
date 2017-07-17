@@ -3,7 +3,6 @@ include "class.php";
 include "db.php";
 
 // mengambil data dari tabel user dari database kontrakan
-$user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'")->fetch_array();
 ?>
 
 
@@ -73,22 +72,10 @@ background: linear-gradient(to right,  #e0e1e2, #e0e1e2, #e0e1e2);
       <img src="foto/rumah.jpg" width="60px" height="35px"> <b> <font face="calibbri"> Kontrak Kita.com </font> </b> </font></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-    <?php 
-
-    // Mengecek apakah user telah login atau belum. jika sudah maka tampilkan nama user dan link log out
-    if (user::logged()) {
-      echo '
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> '. $user_data['nama'] .'</a></li>
-        <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Keluar</a></li>';
-    }
-    // Jika belum maka tampilkan link untuk Mendaftar dan Masuk
-    else {
-      echo '
+ 
         <li><a data-toggle="modal" data-target="#formPendaftaran" data-backdrop="static" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a data-toggle="modal" data-target="#formLogin" data-backdrop="static" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>';     
-    }
-
-     ?>
+   
     </ul>
   </div>
 </nav>
