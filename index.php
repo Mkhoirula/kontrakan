@@ -52,7 +52,7 @@ background: linear-gradient(to right,  #e0e1e2, #e0e1e2, #e0e1e2);
 }
 
 #body{
-  background-image: url(foto/kayu.jpg); 
+  background-image: url(); 
 }
 #filter {
   margin: 0px 0px 0px 0px;
@@ -69,7 +69,7 @@ background: linear-gradient(to right,  #e0e1e2, #e0e1e2, #e0e1e2);
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand-left" ><font size="6">
-      <img src="foto/rumah.jpg" width="60px" height="35px"> <b> <font face="calibbri"> Kontrak Kita.com </font> </b> </font></a>
+      <img src=" http://4.bp.blogspot.com/__HS0bIEGXLI/TDx5kw5e2LI/AAAAAAAAAE8/G_m54YOObmA/s1600/logo4.jpg width="60px" height="35px"> <b> <font face="calibbri"> Kontrak Kita.com </font> </b> </font></a>
     </div>
     <ul class="nav navbar-nav navbar-right">
  
@@ -145,7 +145,7 @@ background: linear-gradient(to right,  #e0e1e2, #e0e1e2, #e0e1e2);
   </div>
 </div>
 <center>
-<img src="foto/kontrak.png" style="width: 30%; height: 220px">
+<img src="http://kreasirumah.net/wp-content/uploads/2016/02/ruko-minimalis-sederhana.jpg" style="width: 30%; height: 220px">
 </center>
 <br>
 
