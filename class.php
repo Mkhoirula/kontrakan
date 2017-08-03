@@ -2,7 +2,7 @@
 
 // Membuat Class user
 class user {
-	public function logged() {
+	public static function logged() {
 
 		// Mengecek apakah Cookie email dan pass ada
 		//Jika ada maka buat variable $user_email dan $user_pass
@@ -15,7 +15,7 @@ class user {
 		}
 		else return false;
 	}
-	public function email() {
+	public static function email() {
 		if (self::logged()) {
 
 			//Mengecek apakah Cookie email ada
@@ -27,7 +27,7 @@ class user {
 		}
 		else return false;
 	}
-	public function pass() {
+	public static function pass() {
 		if (self::logged()) {
 
 			//Mengecek apakah Cookie pass ada
@@ -39,7 +39,7 @@ class user {
 		}
 		else return false;
 	}
-	public function id() {
+	public static function id() {
 		
 	}
 }
