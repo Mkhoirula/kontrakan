@@ -3,6 +3,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "kontrakan";
+$dbname2 = "gambar";
+
 
 // Create connection
 $db = new mysqli($servername, $username, $password, $dbname);
@@ -11,6 +13,11 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 } 
 
+$db = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+} 
 
 // Membuat koneksi ke database
 /**$db	= new mysqli('localhost', 'root', '', 'kontrakan');

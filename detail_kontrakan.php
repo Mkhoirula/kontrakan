@@ -1,7 +1,3 @@
-<?php  
-session_start();
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,29 +53,7 @@ $user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'"
 		</thead>
 		<tbody>
 
-		<div class="container">
-			<div class="modal fade" id="hapusData" role="dialog">
-		    	<div class="modal-dialog">
-		      		<!-- Modal content-->
-		      		<div class="modal-content">
-		        		<div class="modal-header">
-		          			<button type="button" class="close" data-dismiss="modal">&times;</button>
-		          			<h4 class="modal-title">Konfirmasi</h4>
-				        </div>
-		        		<div class="modal-body">
-			        	  	<h4 class="modal-title">Apakah anda yakin ingin menghapus?</h4>
-		        		</div>
-						<div class="modal-footer">
-		    	      		<a onclick="hps2()" href="" class="btn btn-danger">Hapus</a>
-		        	  		<a href="" class="btn btn-primary" data-dismiss="modal">Batal</a>
-		          			
-			        	</div>
-		    		</div>
-		      
-		    	</div>
-			</div>
-		 </div>
-			<?php 
+		<?php 
 			$query = $db->query("SELECT * FROM data_kontrakan WHERE user_id = '". $user_data['id'] ."'");
 			while ($data = $query->fetch_array()) {
 				echo '
@@ -94,7 +68,7 @@ $user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'"
 						<td>'. $data['pembayaran_minimal'] .'</td>
 						<td>'. $data['keterangan'] .'</td>
 						<td><a href="halaman_edit_data.php?id='.$data['id'].'" class="btn btn-warning">Edit</a> | ';
-						echo '<form action="proses_hapus_data.php" method="get" class="js-confirm" data-confirm="Apaka Anda Ingin Menghapus Data Ini?"><input type="hidden" name="id" value="'.$data['id'].'"><button type="submit" class="btn btn-danger">Hapus</button></form> | <a href="halaman_detail_kontrakan.php?id='.$data['id'].'" class="btn btn-warning">Detail</a> </td>
+						echo '<form action="proses_hapus_data.php" method="get" class="js-confirm" data-confirm="Apaka Anda Ingin Menghapus Data Ini?"><input type="hidden" name="id" value="'.$data['id'].'"><button type="submit" class="btn btn-danger">Hapus</button></form> | <a href="halaman_edit_data.php?id='.$data['id'].'" class="btn btn-warning">Detail</a> </td>
 					</tr>';
 				
 			}
@@ -131,15 +105,5 @@ $user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'"
  ?>
 </pre>
  -->
-
- <?php 
-
-$kota = $db->query("SELECT * FROM alamat WHERE provinsi = 'lampung'")->fetch_array();
-echo("Kota yang ada di daerah lampung: <br>");
-$kota2 = explode(',', $kota['kota_kabupaten']);
-foreach ($kota2 as $val) {
-	echo(ucwords($val) ."<br>");
-}
-  ?>
-</body>
-</html>
+ </body>
+ </html>

@@ -6,7 +6,7 @@
   <link rel="icon" type="img" href="favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial  -scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css.boostrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,24 +16,30 @@
   <!-- file desain selectize  -->
   <link rel="stylesheet" type="text/css" href="selectize.bootstrap3.css">  
   <!-- file jquery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="ajax.min.js"></script>
   <!-- file selectize js -->
   <script type="text/javascript" src="selectize.js"></script>
   <!-- jquery datatable -->
-  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="datatable.min.css">
   <!-- js datatable -->
   <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
 <?php 
-include "class.php";
-include "db.php";
+require_once "konfigurasi.php";
 $user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'")->fetch_array();
 ?>
 
 
 <style type="text/css">
+@font-face {
+  font-family: "Spectral-Regular";
+  src: url("Spectral-Regular.ttf");
+}
+body {
+  font-family: Spectral-Regular;
+}
    #nav{
     height: 70px;
     background: #193776;
@@ -76,7 +82,7 @@ $user_data = $db->query("SELECT * FROM user WHERE email = '". user::email() ."'"
   }
   .modal-header{
     height:;
-    background: linear-gradient( orange, white, orange); /* Standard syntax (must be last) */
+    background: linear-gradient( #193776, white, #193776); /* Standard syntax (must be last) */
     border: none;
   }
 
@@ -125,14 +131,14 @@ div.desc {
       <ul class="nav navbar-nav navbar-left">
         <li>
           <a class="navbar-brand-navbar" href="index.php">
-            <img src=" http://4.bp.blogspot.com/__HS0bIEGXLI/TDx5kw5e2LI/AAAAAAAAAE8/G_m54YOObmA/s1600/logo4.jpg width="60px" height="35px"><font class="puteh" size="6"> <b> Kontrak Kita.com </b> </font>
+            <img id="logokontrak" src="http://4.bp.blogspot.com/__HS0bIEGXLI/TDx5kw5e2LI/AAAAAAAAAE8/G_m54YOObmA/s1600/logo4.jpg width="60px" height="35px"><font class="puteh" size="6"> <b> Kontrak Kita.com </b> </font>
           </a>
         </li>
         <li>
           <?php 
           if (user::logged()) {
             echo '
-                  <a class="glyphicon glyphicon-Folder-open" data-toggle="modal" data-target="#myModal">Kontrakan Saya</a>
+                  <a href="tabel_data_tambah_kontrakan.php" class="glyphicon glyphicon-Folder-open"> <font >Kontrakan Saya </font></a>
                   ';
             }
            ?>

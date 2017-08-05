@@ -1,44 +1,38 @@
 <?php 
 session_start();
+
+include 'navbar.php';
  ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com - No Copyright -->
-  <title>Kontrak Kita</title>
+  <!-- <title>Kontrak Kita</title> -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-  <style type="text/css">
-    
- 
-  </style>
-
 </head>
 <body>
 
+      <div class="container">
+        <h2>FORM TAMBAH KONTRAKAN</h2>
+        <?php 
 
-<?php 
-include 'navbar.php';
+        if (isset($_SESSION['ada_kolom_kosong'])) {
+          echo '
+            <div class="alert alert-danger">
+            '. $_SESSION['ada_kolom_kosong'] .'
+            </div>';
+            session_unset($_SESSION['ada_kolom_kosong']);
+        }
 
- ?>
-<div class="container">
-<?php 
- ?>
-   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <form action="proses_form_tambah_kontrakan.php" method="post">
-            
-            <div class="form-group">
+         ?>
+        <form action="proses_form_tambah_kontrakan.php" enctype="multipart/form-data" method="post">
+          <div class="form-group">
             	<span class="eror" id="err-jenis-kontrakan"></span>
             	<br>
               <label >Jenis Kontrakan:  </label>
@@ -50,15 +44,36 @@ include 'navbar.php';
                 <option value="apartement">apartement</option>
               </select>
             </div>
-            <div class="form-group">
+          <div class="form-group">
               <span class="eror" id="err-nama-kontrakan"></span>
               <br>
-              <label >Nama Kontrakan:  </label>
-              <input type="text" class="form-control" id="nama-kontrakan" name="nama_kontrakan">
+            <div class="row">
+              <div class="col-md-6">
+              <label>Nama Kontrakan <br><input size="100%" class="form-control" type="text" name="nama_kontrakan" ></label>
+              </div>
+              <!-- <span class="eror" id="err-kota"></span>
+              <br> -->
+              <div class="col-md-6">
+             <label style="width: 100%" >Kota: <br> 
+              <select  class="form-control" id="kota" name="kota" required>
+
+                 <?php 
+
+                $kota = $db->query("SELECT * FROM alamat WHERE provinsi = 'lampung'")->fetch_array();
+         
+                $kota2 = explode(',', $kota['kota_kabupaten']);
+                foreach ($kota2 as $val) {
+                  echo("<option>". ucwords($val) ."</option>");
+                }
+                  ?>
+              </select>
+              </label>
+              </div>
             </div>
+          </div>
 
             <div class="form-group">
-            	<span class="eror" id="err-alamat"></span>
+              <span class="eror" id="err-alamat"></span>
               <br>
               <label >Alamat:  </label>
               <input type="text" id="alamat" class="form-control"   name="alamat">
@@ -71,12 +86,6 @@ include 'navbar.php';
               <input type="text" id="nama_pemilik_kontrakan" class="form-control"   name="nama_pemilik_kontrakan">
             </div>
 
-            <div class="form-group">
-            	<span class="eror" id="err-pengelola"></span>
-              <br>
-              <label >Pengelola:  </label>
-              <input type="text" class="form-control" id="pengelola" name="pengelola">
-            </div>
 
             <div class="form-group">
             	<span class="eror" id="err-no_hp_pemilik_kontrakan"></span>
@@ -107,11 +116,67 @@ include 'navbar.php';
             </div>
 
             <div class="form-group">
+              <br>  
+              <label >Fasilitas Rumah:  </label> <br>
+              <label>Kamar Mandi <br><input class="form-control" type="number" name="kamar_mandi" value=""></label>
+              <label>Kamar Tidur<br><input class="form-control" type="number" name="kamar_tidur" value=""></label>
+              <label>Ruang Tamu <br> <input class="form-control" type="number" name="ruang_tamu" value=""></label>
+              <label>Ruang Keluarga <br> <input class="form-control" type="number" name="ruang_keluarga" value=""></label>
+              <label>Jumlah Lantai <br><input class="form-control" type="number" name="jumlah_lantai" value=""></label>
+              <label >Sumber Air: <br>  
+              <select class="form-control" id="" name="sumber_air">
+                <option value="pilih">Pilih jenis sumber air</option>
+                <option value="rumah">Sumur</option>
+                <option value="toko">Sumur Bor</option>
+                <option value="gedung">PDAM</option>
+              </select>
+              </label>
+
+              <div class="row">
+             
+              <p>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="dapur" value="1">Dapur</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="ruang_makan" value="1">Ruang Makan</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="ruang_kerja" value="1">Ruang Kerja</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="ruang_jemur" value="1">Tempat Jemur</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="garasi" value="1">Garasi</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="kolam_renang" value="1">Kolam Renang</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="taman" value="1">Taman</label>
+                </div>
+                <div class="col-md-3">
+                  <label><input type="checkbox" name="gudang" value="1">Gudang</label>
+                </div>
+              </p>
+            </div>
+            </div>
+
+            
+            <label >Photo:  
+            <input type="file"  class="form-control" id="photo" name="gambar_kontrakan"></label>
+
+            <div class="form-group">
+              <label >luas Bangunan:  </label> <br>
+              <input type="text" class="form-control" name="luas_bangunan" placeholder="Contoh: (36 m2)">
+            </div>
+
+            <div class="form-group">
             	<span class="eror" id="err-keterangan"></span>
               <label >Keterangan:  </label>
               <textarea class="form-control" name="keterangan"></textarea>
-            </div>
-            
+            </div> 
             <input class="btn btn-default" type="submit" name="proses" value="Kirimkan">
           </form>
         </div>

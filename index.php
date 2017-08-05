@@ -13,8 +13,8 @@ include 'navbar.php';
 <center>
   <form class="form-inline">
     <div class="form-group">
-      <select class="form-control" ">
-        <option>Tipe kontrakan</option>
+      <select placehoder="Tipe Kontrakan"  class="selectize form-control" style="width: 180px ">
+        <option value="">Tipe kontrakan</option>
         <option> Rumah </option>
         <option>Toko</option>
         <option> Gedung </option>

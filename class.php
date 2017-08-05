@@ -39,6 +39,9 @@ class user {
 		}
 		else return false;
 	}
+	public function id() {
+		
+	}
 }
 
 
